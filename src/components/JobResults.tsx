@@ -94,7 +94,7 @@ export default function JobResult({ filterValues: {experience , work, type, loca
         console.log(experience);
 
         fetchData();
-    }, [type,location,experience]);
+    }, [type,location,experience,work]);
 
     if (loading) {
         return <div>Loading...</div>;
