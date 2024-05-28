@@ -4,6 +4,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { useParams } from 'next/navigation'
 import Link from 'next/link';
+import Script from "next/script";
+
+
  
 
 
@@ -79,7 +82,7 @@ export default function Question() {
 
   const chapterName = data[0]?.topic;
 
-  const schema = {
+  const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "Quiz",
     "about": {
@@ -109,9 +112,18 @@ export default function Question() {
   };
 
  
+ 
 
   return (
-    <><section className="mt-20 text-gray-600 body-font">
+    <>
+    <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      <section className="mt-20 text-gray-600 body-font">
       <div className="container mx-auto flex flex-col px-5 py-10 justify-center items-center">
         {/* <Adsense dataAdSlot='9103370999' /> */}
 
