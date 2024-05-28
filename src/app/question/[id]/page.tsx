@@ -116,13 +116,12 @@ export default function Question() {
 
   return (
     <>
-    <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd),
-        }}
-      />
+    <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: jsonLd}}
+          key="product-jsonld"
+        />
+    
       <section className="mt-20 text-gray-600 body-font">
       <div className="container mx-auto flex flex-col px-5 py-10 justify-center items-center">
         {/* <Adsense dataAdSlot='9103370999' /> */}
