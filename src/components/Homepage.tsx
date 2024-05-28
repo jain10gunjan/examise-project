@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 interface Question {
@@ -7,27 +8,55 @@ interface Question {
     difficulty: string;
     question: string;
     options: string;
-    correcr_option: string;
+    correct_option: string;
     solution: string;
 }
 
-
-
-
+interface ApiResponse {
+    data: {
+        data: Question[]; // Adjusted to match the actual structure
+    };
+    total: number;
+    pagenumber: number;
+    limit: number;
+}
 
 const Homepage = () => {
-
-    const [data, setData] = useState<Question[] | null>(null);
+    const [data, setData] = useState<ApiResponse | null>(null);
     const [text, setText] = useState<string>('');
     const [textflag, setTextflag] = useState<boolean | null>(false);
 
+    const totalPages = 100;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const pageRange = 5;
+
+    const handleClick = (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const renderPageNumbers = () => {
+        let startPage = Math.max(1, currentPage - Math.floor(pageRange / 2));
+        let endPage = Math.min(totalPages, startPage + pageRange - 1);
+
+        if (endPage - startPage + 1 < pageRange) {
+            startPage = Math.max(1, endPage - pageRange + 1);
+        }
+
+        const pageNumbers = [];
+        for (let i = startPage; i <= endPage; i++) {
+            pageNumbers.push(i);
+        }
+
+        return pageNumbers;
+    };
 
     const setTextForSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value);
-    }
+    };
 
-     async function searchQuestion (){
-        console.log('Working For SearchQuestion')
+    const searchQuestion = async () => {
+        console.log('Working For SearchQuestion');
         if (textflag === false) {
             setTextflag(true);
         }
@@ -38,41 +67,52 @@ const Homepage = () => {
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
-            const data: Question[] = await res.json();
+            const data: ApiResponse = await res.json();
             setData(data);
             setTextflag(false);
         } catch (error: any) {
-            Error(error.message);
+            console.error(error.message);
         }
-    }
+    };
 
     useEffect(() => {
         async function fetchData() {
             console.log('working useEffect');
             try {
-                const res = await fetch(`https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/aptitudeData`);
+                const res = await fetch(`https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/aptitudeData?pagenumber=${currentPage}&limit=20`);
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
                 }
-                const data: Question[] = await res.json();
+                const data: ApiResponse = await res.json();
                 setData(data);
                 setTextflag(false);
             } catch (error: any) {
-                Error(error.message);
+                console.error(error.message);
             }
         }
 
         fetchData();
-    }, []);
+    }, [currentPage]);
 
+    console.log(data?.data);
 
-    return (
+     return (
         <>
             <section className="h-auto bg-white tails-selected-element">
-                <div className="px-10 py-2 mx-auto max-w-7xl">
-                    <div className="w-full">
-                        <h1 className="mb-6 text-5xl font-extrabold leading-none max-w-5xl mx-auto tracking-normal text-gray-900 sm:text-6xl md:text-6xl lg:text-7xl md:tracking-tight"><span className="w-full text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 lg:inline">Examise</span>.in</h1>
-                        <p className="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24"> Your One Stop For All MCQs Needs.</p>
+            <div className="bg-white dark:bg-gray-800 ">
+    <div className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+        <h2 className="text-5xl font-extrabold text-black dark:text-white sm:text-4xl">
+            <span className="block">
+                Examise.in
+            </span>
+        </h2>
+
+            <span className="block text-indigo-500">
+                Your One Stop Need For All MCQ Problems.
+            </span>
+    </div>
+</div>
+                         
 
                         <form className="flex justify-center" action={searchQuestion}>
                             <label htmlFor="simple-search" className="sr-only">Search</label>
@@ -84,33 +124,67 @@ const Homepage = () => {
                             </div>
                             <button type="submit" className="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                         </form>
-                    </div>
-
-                </div>
+                
 
                 <div className="relative flex flex-col jus items-center justify-center overflow-hidden p-6 sm:py-12">
 
+                {Array.isArray(data?.data) ? (
+    data?.data.map((data, index) => (
+        <div key={index} className="w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center hover:bg-purple-100 hover:cursor-pointer justify-between px-5 py-4 rounded-md">
+            <Link href={`/question/${data._id}`}>
+                <span className="text-purple-800 text-sm" dangerouslySetInnerHTML={{ __html: data.topic }}></span>
+                <h3 className="font-bold mt-px" dangerouslySetInnerHTML={{ __html: data.question }}></h3>
+                <div className="flex items-center gap-3 mt-2">
+                    <span className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Practice</span>
+                    <span className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Share</span>
+                </div>
+            </Link>
+        </div>
+    ))
+) : (
+    <div>No data available</div>
+)}
 
+                
 
-
-
-                    {data?.map((data, index) => (
-                        <div key={index} className="w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center hover:bg-purple-100 hover:cursor-pointer justify-between px-5 py-4 rounded-md">
-                            <div>
-
-                                <span className="text-purple-800 text-sm" dangerouslySetInnerHTML={{ __html: data.topic }}></span>
-                                <h3 className="font-bold mt-px" dangerouslySetInnerHTML={{ __html: data.question }}></h3>
-                                <div className="flex items-center gap-3 mt-2">
-                                    <span className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Practice</span>
-                                    <span className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Share</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    ))}
                 </div>
             </section>
 
+            {!textflag && (
+                <div className="flex items-center justify-center">
+                <div className="p-6 rounded shadow-lg">
+                      <div className="flex space-x-2">
+                    <button
+                      onClick={() => handleClick(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                    >
+                      Prev
+                    </button>
+                    {renderPageNumbers().map((number) => (
+                      <button
+                        key={number}
+                        onClick={() => handleClick(number)}
+                        className={`px-4 py-2 rounded ${
+                          number === currentPage
+                            ? 'bg-blue-700 text-white'
+                            : 'bg-blue-500 text-white hover:bg-blue-700'
+                        }`}
+                      >
+                        {number}
+                      </button>
+                    ))}
+                    <button
+                      onClick={() => handleClick(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                    >
+                      Next
+                    </button>
+                  </div>
+                  </div>
+                  </div>
+            )}
         </>
     );
 };
