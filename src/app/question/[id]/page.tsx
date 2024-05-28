@@ -118,7 +118,7 @@ export default function Question() {
     <>
     <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: jsonLd}}
+          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
           key="product-jsonld"
         />
     
