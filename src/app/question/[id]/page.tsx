@@ -75,8 +75,31 @@ export default function Question() {
   };
 
   const chapterName = data[0]?.topic;
-
-  const jsonLd = {
+  interface JsonLdObject {
+    "@context": string;
+    "@type": string;
+    about: {
+      "@type": string;
+      name: string;
+    };
+    educationalAlignment: {
+      "@type": string;
+      alignmentType: string;
+      targetName: string;
+    }[];
+    hasPart: {
+      "@context": string;
+      "@type": string;
+      eduQuestionType: string;
+      text: string;
+      acceptedAnswer: {
+        "@type": string;
+        text: string;
+      };
+    }[];
+  }
+  
+  const jsonLd: JsonLdObject[] = [{
     "@context": "https://schema.org/",
     "@type": "Quiz",
     "about": {
@@ -103,19 +126,19 @@ export default function Question() {
         }
       }
     ]
-  };
+  }];
 
  
  
 
   return (
     <>
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
           key="product-jsonld"
-        />
-    <MetaData seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
+        /> */}
+    <MetaData seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`} jsontld={jsonLd}/>
 
     
       <section className="mt-20 text-gray-600 body-font">
