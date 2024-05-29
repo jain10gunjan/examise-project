@@ -110,12 +110,13 @@ export default function Question() {
 
   return (
     <>
-    <MetaData seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
-    <script
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
           key="product-jsonld"
         />
+    <MetaData seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
+
     
       <section className="mt-20 text-gray-600 body-font">
       <div className="container mx-auto flex flex-col px-5 py-10 justify-center items-center">
