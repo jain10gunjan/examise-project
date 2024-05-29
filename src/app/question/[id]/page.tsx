@@ -4,7 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { useParams } from 'next/navigation'
 import Link from 'next/link';
-import MetaData from '@/components/MetaData';
+import MetaDataJobs from '@/components/MetaDataJobs';
 
 
 
@@ -99,7 +99,8 @@ export default function Question() {
     }[];
   }
   
-  const jsonLd: JsonLdObject[] = [{
+  const jsonLd: JsonLdObject[] = [
+    {
     "@context": "https://schema.org/",
     "@type": "Quiz",
     "about": {
@@ -133,12 +134,11 @@ export default function Question() {
 
   return (
     <>
-        {/* <script
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-          key="product-jsonld"
-        /> */}
-    <MetaData seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`} jsontld={jsonLd}/>
+        />
+    <MetaDataJobs seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
 
     
       <section className="mt-20 text-gray-600 body-font">
