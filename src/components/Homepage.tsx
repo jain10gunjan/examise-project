@@ -77,7 +77,6 @@ const Homepage = () => {
 
     useEffect(() => {
         async function fetchData() {
-            console.log('working useEffect');
             try {
                 const res = await fetch(`https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/aptitudeData?pagenumber=${currentPage}&limit=20`);
                 if (!res.ok) {
@@ -94,7 +93,6 @@ const Homepage = () => {
         fetchData();
     }, [currentPage]);
 
-    console.log(data?.data);
 
      return (
         <>

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
- 
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap[]> {
     interface ApiResponse {
         data: {
@@ -16,8 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap[]> {
         const data: ApiResponse | any = await res.json();
 
         var result =  data.data.map((id: string) => ({
-            url: `https://app.examise.in/question/${id}`,
-            lastModified: new Date().toISOString(),
+            url: `https://app.examise.in${id}`,
+            lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 1,
         }));
