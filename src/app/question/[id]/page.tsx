@@ -4,7 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { useParams } from 'next/navigation'
 import Link from 'next/link';
-import MetaDataJobs from '@/components/MetaDataJobs';
+import MetaData from '@/components/MetaData';
 
 
 
@@ -134,11 +134,12 @@ export default function Question() {
 
   return (
     <>
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-        />
-    <MetaDataJobs seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
+          key="product-jsonld"
+        /> */}
+    <MetaData seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`} jsontld={jsonLd}/>
 
     
       <section className="mt-20 text-gray-600 body-font">
