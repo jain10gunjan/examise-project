@@ -29,7 +29,6 @@ export default function Question() {
   }
 
   let qid = useParams<{ id: string; }>()
-  console.log(qid.id)
   const [data, setData] = useState<ApiResponse | any>([]);
   const [simillarData, setSimillarData] = useState<ApiResponse | any>([]);
 
@@ -46,11 +45,11 @@ export default function Question() {
           throw new Error('Network response was not ok');
         }
 
-        const data: ApiResponse | any = await res.json();
-        const res2 = await fetch(`https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/aptitudeData?topicwise=${data?.data[0]?.topic}`);
+        const data1: ApiResponse | any = await res.json();
+        const res2 = await fetch(`https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/aptitudeData?topicwise=${data1?.data[0]?.topic}`);
         const data2: ApiResponse = await res2.json();
 
-        setData(data?.data);
+        setData(data1?.data);
         setSimillarData(data2?.data);
 
       } catch (error: any) {
@@ -58,12 +57,10 @@ export default function Question() {
       }
     }
     
-    console.log(data)
-    fetchData();
+     fetchData();
   }, [qid]);
 
-  console.log(simillarData)
-
+ 
   const handleOptionClick = (option: string) => {
     if (!data || option !== data[0]?.correct_option) {
       toast.error('Wrong option');

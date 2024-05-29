@@ -27,7 +27,7 @@ interface Job {
     link: string,
 }
 
-export default function jobByID() {
+export default function JobByID() {
     const [job, setJob] = useState<Job[] | any>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -54,7 +54,6 @@ export default function jobByID() {
         fetchData();
     }, [jobid]);
 
-console.log(job);
     if (loading) {
         return <div>Loading...</div>;
     }
