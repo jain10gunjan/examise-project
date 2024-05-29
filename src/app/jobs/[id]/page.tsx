@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useParams } from 'next/navigation'
 import Link from 'next/link';
-import MetaData from '@/components/MetaData';
 import Image from 'next/image';
+import MetaDataJobs from '@/components/MetaDataJobs';
 
 interface Job {
     title: string;
@@ -65,7 +65,7 @@ export default function JobByID() {
 
     return (
         <>
-            <MetaData seoTitle={job?.sharetext} seoDescription={`${job?.title} ${job?.companyName}`}/>
+            <MetaDataJobs seoTitle={job?.sharetext} seoDescription={`${job?.title} ${job?.companyName}`}/>
 
 
             <section className="mt-20 text-gray-600 body-font">
