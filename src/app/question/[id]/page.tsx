@@ -132,16 +132,19 @@ export default function Question() {
   }];
 
  
- 
+//  const schemajson = jsonLd;
 
   return (
     <>
     <MetaDataJobs seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
-   
+   {/* {console.log(jsonLd[0].about.name == 'undefined')} */}
+      {jsonLd[0].about.name !== 'undefined' && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
         />
+    )}        
+      
 
     
       <section className="mt-20 text-gray-600 body-font">
