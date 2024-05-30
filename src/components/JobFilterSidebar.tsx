@@ -33,7 +33,7 @@ export default async function JobFilterSidebar() {
     //Create an api that return only the locations of the job
     try {
         const data = await fetchData();
-        //console.log(data.companyLocation.filter((loc:any) => loc !== null))
+         //console.log(data.companyLocation.filter((loc:any) => loc !== null))
         return (
             <aside className="md:w-[260px] p-4 sticky top-0 h-fit bg-background border rounded-lg">
                 <form action={filterJobs}>

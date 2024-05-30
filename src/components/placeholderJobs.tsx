@@ -19,16 +19,46 @@ type JobListItemsProps = {
 // lib/fetchData.ts
 export async function fetchData() {
   try {
-      const res = await fetch('https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/jobsdata?companyLocation=all&type=all&experience=all&category=all');
+       const res = await fetch('https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/jobsdata?companyLocation=all&type=all&experience=all&category=all',{ cache: 'no-store' });
       if (!res.ok) {
           throw new Error('Network response was not ok');
       }
       const data = await res.json();
-      return data;
+       return data;
   } catch (error: any) {
       throw new Error(error.message);
   }
 }
+
+export async function fetchDataQuestion(qid:any) {
+  console.log('working server questions');
+  try {
+    // Fetch the main question data
+    const res = await fetch(`https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/aptitudeData?_id=${qid}`);
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await res.json();
+
+    // Check if data is available and fetch related topics data
+    if (data?.data && data.data.length > 0) {
+      const topic = data.data[0].topic;
+      const res2 = await fetch(`https://us-east-1.aws.data.mongodb-api.com/app/aptitude_tracker_api-fjroz/endpoint/aptitudeData?topicwise=${topic}`);
+      if (!res2.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data2 = await res2.json();
+
+      // Return both the main question data and the related topics data
+      return { data: data.data, simillarData: data2.data };
+    } else {
+      throw new Error('No data found for the given question ID');
+    }
+  } catch (error:any) {
+    throw new Error(error.message);
+  }
+}
+
 
 
 // const placeholderJobs: JobListItemsProps[] = [

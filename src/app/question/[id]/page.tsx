@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link';
 import MetaData from '@/components/MetaData';
 import MetaDataJobs from '@/components/MetaDataJobs';
+import Head from 'next/head';
 
 
 
@@ -135,10 +136,8 @@ export default function Question() {
 
   return (
     <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-        />
+   
+        
     <MetaDataJobs seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
 
     
@@ -162,7 +161,7 @@ export default function Question() {
 
 
                   <div className="questioncontainer">
-                    <MathJax>
+                    <MathJax inline dynamic>
                       <span dangerouslySetInnerHTML={{
                         __html: data[0]?.question
                       }} />
@@ -174,10 +173,10 @@ export default function Question() {
 
 
 
-                    <MathJax><div onClick={() => handleOptionClick("A")} id="A" dangerouslySetInnerHTML={{ __html: data[0]?.options['A'] }}></div></MathJax>
-                    <MathJax><div onClick={() => handleOptionClick("B")} id="B" dangerouslySetInnerHTML={{ __html: data[0]?.options['B'] }}></div></MathJax>
-                    <MathJax><div onClick={() => handleOptionClick("C")} id="C" dangerouslySetInnerHTML={{ __html: data[0]?.options['C'] }}></div></MathJax>
-                    <MathJax><div onClick={() => handleOptionClick("D")} id="D" dangerouslySetInnerHTML={{ __html: data[0]?.options['D'] }}></div></MathJax>
+                    <MathJax inline dynamic><div onClick={() => handleOptionClick("A")} id="A" dangerouslySetInnerHTML={{ __html: data[0]?.options['A'] }}></div></MathJax>
+                    <MathJax inline dynamic><div onClick={() => handleOptionClick("B")} id="B" dangerouslySetInnerHTML={{ __html: data[0]?.options['B'] }}></div></MathJax>
+                    <MathJax inline dynamic><div onClick={() => handleOptionClick("C")} id="C" dangerouslySetInnerHTML={{ __html: data[0]?.options['C'] }}></div></MathJax>
+                    <MathJax inline dynamic><div onClick={() => handleOptionClick("D")} id="D" dangerouslySetInnerHTML={{ __html: data[0]?.options['D'] }}></div></MathJax>
 
 
 
@@ -195,7 +194,7 @@ export default function Question() {
                     {/* Accordian */}
                     <span className="text-neutral-600 mt-3 group-open:animate-fadeIn">
                       {/* Correct Option:  <span dangerouslySetInnerHTML={{ __html: data?.correct_option }}></span>   */}
-                      <MathJax>The answer for the question is: <span dangerouslySetInnerHTML={{ __html: data[0]?.solution }}></span></MathJax>
+                      <MathJax inline dynamic>The answer for the question is: <span dangerouslySetInnerHTML={{ __html: data[0]?.solution }}></span></MathJax>
 
 
 
@@ -228,7 +227,7 @@ export default function Question() {
         <div key={index} className="w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center hover:bg-purple-100 hover:cursor-pointer justify-between px-5 py-4 rounded-md">
             <Link href={`/question/${data._id}`}>
                 <span className="text-purple-800 text-sm" dangerouslySetInnerHTML={{ __html: data.topic }}></span>
-                <h3 className="font-bold mt-px" dangerouslySetInnerHTML={{ __html: data.question }}></h3>
+                <MathJax inline dynamic><h3 className="font-bold mt-px" dangerouslySetInnerHTML={{ __html: data.question }}></h3></MathJax>
                 <div className="flex items-center gap-3 mt-2">
                     <span className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Practice</span>
                     <span className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Share</span>
@@ -248,6 +247,11 @@ export default function Question() {
             </div>
           </div>
         </div></div></section>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+        />
       <Toaster />
     </>
   )
