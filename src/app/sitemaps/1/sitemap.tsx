@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap[]> {
             url: `https://app.examise.in${id}`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
-            priority: 1,
+            priority: 1.0,
         }));
 
     } catch (error: any) {
