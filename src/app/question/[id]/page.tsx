@@ -136,9 +136,12 @@ export default function Question() {
 
   return (
     <>
-   
-        
     <MetaDataJobs seoTitle={data[0]?.question.replace(/<[^>]*>?/gm, '')} seoDescription={`${data[0]?.question.replace(/<[^>]*>?/gm, '')}\n${data[0]?.correct_option}`}/>
+   
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+        />
 
     
       <section className="mt-20 text-gray-600 body-font">
@@ -247,11 +250,6 @@ export default function Question() {
             </div>
           </div>
         </div></div></section>
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-        />
       <Toaster />
     </>
   )
