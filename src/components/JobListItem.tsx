@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import toast, { Toaster } from 'react-hot-toast';
 
 type JobListItemsProps = {
     title: string;
@@ -23,6 +24,24 @@ type JobListItemsProps = {
 
 export default function JobListItem({ job }: { job: JobListItemsProps }) {
     // Function implementation here
+    const handleCopy = () => {
+        const textToCopy = `${job?.sharetext}
+Company Name: ${job?.companyName}
+Title: ${job?.title}
+Type: ${job?.type}
+Category: ${job?.category}
+Location: ${job?.companyLocation}
+Salary: ${job?.salary}
+Apply Link: ${job?.link}`;
+
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+                toast.success("Copied The Job Successfully");
+            })
+            .catch(() => {
+                toast.error("Failed to copy");
+            });
+    };
     return (
         <>
         
@@ -44,7 +63,7 @@ export default function JobListItem({ job }: { job: JobListItemsProps }) {
     
    <div className="absolute top-0 right-0 mb-3 py-4 px-5 flex gap-3">
        <Link href={`/jobs/${job?._id}`} className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Apply Now</Link>
-   <button className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Share</button>
+   <button onClick={handleCopy} className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Share</button>
 
    {/* <Link href={`/job/${job._id}`}><button className="bg-purple-900 text-white font-medium px-4 py-2 rounded-md gap-1 ">Apply Now  </button></Link>
  <Link href={`/job/${job._id}`}><button className="bg-purple-900 text-white font-medium px-4 py-2 rounded-md gap-1 items-center">Share  

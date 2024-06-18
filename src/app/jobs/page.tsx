@@ -20,6 +20,8 @@ export default function Jobs({ searchParams: { work, experience, type, location 
         type,
         location,
     }
+
+    
     return (
         <div className="max-w-5xl m-auto px-3 my-10 space-y-10">
             <div className="relative z-10 container px-4 mx-auto">
