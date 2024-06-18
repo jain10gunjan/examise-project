@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MetaDataJobs from '@/components/MetaDataJobs';
 
+
 interface Job {
     title: string;
     companyName: string;
@@ -54,6 +55,25 @@ export default function JobByID() {
         fetchData();
     }, [jobid]);
 
+    const handleCopy = () => {
+        const textToCopy = `${job?.sharetext}
+Company Name: ${job?.companyName}
+Title: ${job?.title}
+Type: ${job?.type}
+Category: ${job?.category}
+Location: ${job?.companyLocation}
+Salary: ${job?.salary}
+Apply Link: ${job?.link}`;
+
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+                toast.success("Copied The Job Successfully");
+            })
+            .catch(() => {
+                toast.error("Failed to copy");
+            });
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -93,8 +113,9 @@ export default function JobByID() {
     
    <div className="absolute top-0 right-0 mb-3 py-4 px-5 flex gap-3">
        <Link href={`${job?.link}`} className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Apply Now</Link>
-   <button className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Share</button>
-     </div> 
+   
+   <button onClick={handleCopy} className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">Share</button>
+      </div> 
    </div>
     </div>
 
