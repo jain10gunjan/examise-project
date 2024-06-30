@@ -1,10 +1,13 @@
-import Homepage from "@/components/Homepage";
-import Link from "next/link";
+import HomepageComponent from "@/components/examisehome/HomepageComponent";
+import Services from "@/components/examisehome/Services";
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
-      <Homepage />
-    </main>
+    <main>
+    
+      
+      <HomepageComponent/>
+      <Services/>
+     </main>
   );
 }
