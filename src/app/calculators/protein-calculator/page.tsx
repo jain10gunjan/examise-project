@@ -100,7 +100,7 @@ export default function Home() {
 
                             <p className="text-lg text-gray-800 dark:text-neutral-200">Protein puzzle solved! Experts weigh in on your daily needs.
                                 Four lines tell you all: grams you crave, sources to choose.
-                                Let's build that healthy you, one protein bite at a time.</p>
+                                Let&apos;s build that healthy you, one protein bite at a time.</p>
 
                             <p className="text-lg text-gray-800 dark:text-neutral-200">{results && (
                                 <div className="mt-4 space-y-2">
@@ -188,7 +188,7 @@ export default function Home() {
                             <ul className="list-disc list-outside space-y-5 ps-5 text-lg text-gray-800 dark:text-neutral-200">
                                 <li className="ps-2">Personalization: It considers your unique needs and goals.</li>
                                 <li className="ps-2">Guidance: It provides a starting point for your protein intake journey.</li>
-                                <li className="ps-2">Awareness: It helps you understand your body's protein requirements.</li>
+                                <li className="ps-2">Awareness: It helps you understand your body&apos;s protein requirements.</li>
                             </ul>
                             <div className="space-y-3">
                                 <h3 className="text-2xl font-semibold dark:text-white">Factors Affecting Protein Needs</h3>

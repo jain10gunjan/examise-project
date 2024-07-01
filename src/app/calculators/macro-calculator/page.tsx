@@ -18,7 +18,7 @@ const CreateYourOwnTable: React.FC = () => {
   const initialProtein =  parseInt(data[0].Protein);
   const initialCarbs = parseInt(data[0].Carbs);
   const initialFat = parseInt(data[0].Fat);
-  const totalCalories = parseFloat(data[0].FoodEnergy);
+  const totalCalories = parseInt(data[0].FoodEnergy);
 
   const [protein, setProtein] = useState<number>(initialProtein);
   const [carbs, setCarbs] = useState<number>(initialCarbs);
@@ -29,10 +29,12 @@ const CreateYourOwnTable: React.FC = () => {
     setTableData(data);
   }, [data]);
 
-  const handleProteinChange = (value: number) => {
+  const handleProteinChange = (value: number, carbs: Number, fat: Number) => {
     const remainingCalories = totalCalories - (value * 4);
-    const newCarbs = remainingCalories / 4;
-    const newFat = ( remainingCalories) / 36;
+    // const newCarbs = (((totalCalories - (value*4) - (Number(fat)*9)) / 4)*Number(data[0].activity)) + Number(data[0].goal) ;
+    // const newFat = (((totalCalories - (value*4) - (Number(carbs)*4)) / 9)*Number(data[0].activity)) + Number(data[0].goal) ;
+    const newCarbs = ((remainingCalories / 4) * 0.5325);
+    const newFat = ((remainingCalories/9) * 0.2564);
   
     setProtein(value);
     setCarbs(newCarbs);
@@ -77,11 +79,11 @@ const CreateYourOwnTable: React.FC = () => {
         <input
           type="range"
           id="proteinSlider"
-          min="0"
-          max={initialProtein * 2}
+          min={data[0].ProteinRangeLowerBound}
+          max={data[0].ProteinRangeUpperBound}
           step="1"
           value={protein}
-          onChange={(e) => handleProteinChange(Number(e.target.value))}
+          onChange={(e) => handleProteinChange(Number(e.target.value), Number(carbs),Number(fat) )}
           className="w-full mt-1"
         />
       </div>
