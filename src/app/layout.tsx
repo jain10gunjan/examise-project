@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <div className="bg-gradient-to-t from-black to-transparent">
+      <div className="bg-gray-800">
       <body className={inter.className}>
         <Navbar />
         {children}

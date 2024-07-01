@@ -5,9 +5,9 @@ export default function Home() {
   return (
     <main>
     
-      
-      <HomepageComponent/>
-      <Services/>
+      <div>Under Construction....</div>
+      {/* <HomepageComponent/> */}
+      {/* <Services/> */}
      </main>
   );
 }
