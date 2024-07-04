@@ -58,7 +58,7 @@ const CalculatorForm: React.FC = () => {
     <>
     <AngryBirdsSchema {...angryBirdsData} />
 
-    <NextSeo
+    {/* <NextSeo
         title="Macro Nutrient Calculator: Calculate Your Daily Macro Nutrient Intake Easily"
         description="Discover how to use a macronutrient calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively."
         canonical="https://www.examise.in/calculators/macro-calculator"
@@ -81,7 +81,7 @@ const CalculatorForm: React.FC = () => {
           site: '@examise',
           cardType: 'summary_large_image',
         }}
-      />
+      /> */}
     <div className="mt-12 max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
     <div className="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6">
         <div className="lg:col-span-2">

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { calculate, numberWithCommas } from '../../../lib/calculators';
+import { calculate } from '../../../lib/calculators';
 
 const MacroCalculatorForm: React.FC = () => {
   const [input, setInput] = useState<any>({

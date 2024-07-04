@@ -108,7 +108,7 @@ export default function Home() {
 <>
 <AngryBirdsSchema {...angryBirdsData} />
 
-<NextSeo
+{/* <NextSeo
         title="Protein Calculator: Calculate Your Daily Protein Intake Easily"
         description="Discover how to use a Protein calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively."
         canonical="https://www.examise.in/calculators/bmi-calculator"
@@ -131,7 +131,7 @@ export default function Home() {
           site: '@examise',
           cardType: 'summary_large_image',
         }}
-      />
+      /> */}
         <div className="mt-12 max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
             
             
