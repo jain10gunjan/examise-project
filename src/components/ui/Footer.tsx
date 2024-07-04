@@ -10,18 +10,18 @@ export default function Footer() {
 
     <ul className="text-center">
       <li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-neutral-600">
-        <a className="inline-flex gap-x-2 text-sm text-white hover:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200" href="#">
+        <a className="inline-flex gap-x-2 text-sm text-white hover:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200" href="/about-us">
           About
         </a>
       </li>
       <li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-neutral-600">
-        <a className="inline-flex gap-x-2 text-sm text-white hover:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200" href="#">
-          Services
+        <a className="inline-flex gap-x-2 text-sm text-white hover:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200" href="/contact-us">
+          Contact Us
         </a>
       </li>
       <li className="inline-block relative pe-8 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-neutral-600">
-        <a className="inline-flex gap-x-2 text-sm text-white hover:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200" href="#">
-          Blog
+        <a className="inline-flex gap-x-2 text-sm text-white hover:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200" href="/privacy-policy">
+          Privacy Policy
         </a>
       </li>
     </ul>

@@ -1,7 +1,31 @@
 'use client'
 import Sidebar from '@/components/calculators/sidebarrelated/Sidebar';
+import Share_print from '@/lib/share_print';
+import { Share } from 'next/font/google';
 import { useState } from 'react';
+import coverImage from '../../../../public/fitness/protien_calculator.png';
+import { NextSeo } from 'next-seo';
+import AngryBirdsSchema from '@/lib/Schema';
+interface SoftwareApplicationProps {
+    name: string;
+    operatingSystem: string;
+    applicationCategory: string;
+    ratingValue: string;
+    ratingCount: string;
+    price: string;
+    priceCurrency: string;
+  }
 
+  
+const angryBirdsData: SoftwareApplicationProps = {
+    name: "Examise Protein Calculator",
+    operatingSystem: "WEB",
+    applicationCategory: "computerApplication",
+    ratingValue: "4.6",
+    ratingCount: "8890",
+    price: "Free",
+    priceCurrency: "INR",
+  };
 const calculateBMR = (
     gender: string,
     activity: number,
@@ -81,8 +105,36 @@ export default function Home() {
     };
 
     return (
+<>
+<AngryBirdsSchema {...angryBirdsData} />
 
+<NextSeo
+        title="Protein Calculator: Calculate Your Daily Protein Intake Easily"
+        description="Discover how to use a Protein calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively."
+        canonical="https://www.examise.in/calculators/bmi-calculator"
+        openGraph={{
+          url: 'https://www.examise.in/calculators/protein-calculator',
+          title: 'Protein Calculator: Calculate Your Daily Protein Intake Easily',
+          description: 'Discover how to use a Protein calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively.',
+          images: [
+            {
+              url: 'https://www.examise.in/calculators/protein-calculator',
+              width: 1200,
+              height: 630,
+              alt: 'Protein Calculator Guide',
+            },
+          ],
+          site_name: 'Examise.in',
+        }}
+        twitter={{
+          handle: '@examise',
+          site: '@examise',
+          cardType: 'summary_large_image',
+        }}
+      />
         <div className="mt-12 max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
+            
+            
             <div className="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6">
                 <div className="lg:col-span-2">
                     <div className="py-8 lg:pe-8">
@@ -91,12 +143,7 @@ export default function Home() {
 
                             <h2 className="text-3xl font-bold lg:text-5xl dark:text-white">Protein Calculator: Calculate Your Daily Protein Intake Easily</h2>
 
-                            <div className="flex items-center gap-x-5">
-                                <a className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-800 dark:text-neutral-200" href="#">
-                                    Get PDF
-                                </a>
-                                <a className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-800 dark:text-neutral-200" href="#">Copy Result</a>
-                            </div>
+                            <Share_print/>
 
                             <p className="text-lg text-gray-800 dark:text-neutral-200">Protein puzzle solved! Experts weigh in on your daily needs.
                                 Four lines tell you all: grams you crave, sources to choose.
@@ -169,9 +216,9 @@ export default function Home() {
                             </div>
 
                             <figure>
-                                <img className="w-full object-cover rounded-xl" src="https://images.unsplash.com/photo-1671726203454-488ab18f7eda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description" />
+                                <img className="w-full object-cover rounded-xl" src={coverImage.src} alt="Image Description" />
                                 <figcaption className="mt-3 text-sm text-center text-gray-500 dark:text-neutral-500">
-                                    A man and a woman looking at a cell phone.
+                                    Protein Calculator Cover Image For The Page.
                                 </figcaption>
                             </figure>
 
@@ -233,5 +280,6 @@ export default function Home() {
                 <Sidebar />
             </div>
         </div>
+        </>
     );
 }

@@ -64,10 +64,17 @@ export function calculate(input: any) {
           ProteinRange: `${weight} - ${(protein * 0.342).toFixed(0)} grams/day`,
           ProteinRangeLowerBound: `${weight}`,
           ProteinRangeUpperBound:`${(protein * 0.342).toFixed(0)}`,
+
           Carbs: `${(carbs * 0.5325).toFixed(0)} grams/day`,
           CarbsRange: `${(carbs * 0.427).toFixed(0)} - ${((bmr * 0.7) / 3.75).toFixed(0)} grams/day`,
+          CarbsRangeLowerBound: `${(carbs * 0.427).toFixed(0)}`,
+          CarbsRangeUpperBound:`${((bmr * 0.7) / 3.75).toFixed(0)}`,
+
           Fat: `${(fat * 0.2564).toFixed(0)} grams/day`,
           Fatrange: `${(fat * 0.2).toFixed(0)} - ${((bmr * 0.35) / 8.8).toFixed(0)} grams/day`,
+          FatRangeLowerBound:`${(fat * 0.2).toFixed(0)}`,
+          FatRangeUpperBound:`${((bmr * 0.35) / 8.8).toFixed(0)}`,
+
           Sugar: `${sugar.toFixed(0)} grams/day`,
           SaturatedFat: `${saturatedFat.toFixed(0)} grams/day`,
           FoodEnergy: `${(bmr.toFixed(0))} Calories/day`,

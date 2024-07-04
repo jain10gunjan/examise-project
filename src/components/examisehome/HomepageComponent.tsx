@@ -4,11 +4,11 @@ export default function HomepageComponent() {
             <div className="">
                 <div className="max-w-5xl mx-auto px-4 xl:px-0 pt-24 lg:pt-32 pb-24">
                     <h1 className="font-semibold text-gray-800 text-5xl md:text-6xl">
-                        <span className="text-[#60f] ">Examise</span> Transforming online education with ease.
+                        <span className="text-[#60f] ">Examise - </span> Your Go-To Calculator Hub
                     </h1>
                     <div className="max-w-4xl">
                         <p className="mt-5 text-neutral-400 text-lg">
-                            Introducing Examise, an innovative edtech platform designed to revolutionize the way students prepare for exams. With personalized learning paths, interactive content, and real-time feedback, Examise ensures every student achieves their academic goals with confidence.
+                        Welcome to Examise, your ultimate destination for a comprehensive suite of calculators designed to simplify your financial, fitness, health, math, and everyday calculations. Whether you&apos;re planning your finances, tracking your health metrics, or solving complex math problems, Examise provides accurate and user-friendly tools to meet all your calculation needs. 
                         </p>
                     </div>
                 </div>
