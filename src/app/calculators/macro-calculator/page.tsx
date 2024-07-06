@@ -6,6 +6,7 @@ import Image from "../../../../public/fitness/macro_nutrient_calculator.png"
 import { NextSeo } from 'next-seo';
 import Share_print from '@/lib/share_print';
 import AngryBirdsSchema from '@/lib/Schema';
+import MetaDataJobs from '@/components/MetaDataJobs';
 interface SoftwareApplicationProps {
   name: string;
   operatingSystem: string;
@@ -57,7 +58,7 @@ const CalculatorForm: React.FC = () => {
   return (
     <>
     <AngryBirdsSchema {...angryBirdsData} />
-
+    <MetaDataJobs seoTitle={`MacroNutrient Calculator - Examise.in`} seoDescription={`Discover how to use a macronutrient calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively.`}/>
     {/* <NextSeo
         title="Macro Nutrient Calculator: Calculate Your Daily Macro Nutrient Intake Easily"
         description="Discover how to use a macronutrient calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively."

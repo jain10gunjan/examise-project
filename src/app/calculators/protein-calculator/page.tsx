@@ -6,6 +6,10 @@ import { useState } from 'react';
 import coverImage from '../../../../public/fitness/protien_calculator.png';
 import { NextSeo } from 'next-seo';
 import AngryBirdsSchema from '@/lib/Schema';
+import Head from 'next/head'
+import MetaDataJobs from '@/components/MetaDataJobs';
+
+
 interface SoftwareApplicationProps {
     name: string;
     operatingSystem: string;
@@ -107,6 +111,7 @@ export default function Home() {
     return (
 <>
 <AngryBirdsSchema {...angryBirdsData} />
+<MetaDataJobs seoTitle={`Protein Calculator - Examise.in`} seoDescription={`Discover how to use a Protein calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively.`}/>
 
 {/* <NextSeo
         title="Protein Calculator: Calculate Your Daily Protein Intake Easily"

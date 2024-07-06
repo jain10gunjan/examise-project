@@ -6,6 +6,7 @@ import { useState } from 'react';
 import coverImage from '../../../../public/fitness/body_mass_calculator.png'
 import AngryBirdsSchema from '@/lib/Schema';
 import { NextSeo } from 'next-seo';
+import MetaDataJobs from '@/components/MetaDataJobs';
 // interfaces.ts
 
 interface SoftwareApplicationProps {
@@ -164,6 +165,7 @@ const BMICalculator = () => {
   return (
     <>
     <AngryBirdsSchema {...angryBirdsData} />
+    <MetaDataJobs seoTitle={`BMI Calculator - Examise.in`} seoDescription={`Discover how to use a BMI calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively.`}/>
     {/* <NextSeo
         title="BMI Calculator: Your Guide to Healthy Living"
         description="Discover how to use a BMI calculator to optimize your diet for health and fitness. Learn about proteins, carbohydrates, fats, and how to balance them effectively."

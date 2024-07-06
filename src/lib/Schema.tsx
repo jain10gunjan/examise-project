@@ -4,7 +4,7 @@ import Script from 'next/script';
 // import { SoftwareApplicationProps } from '../interfaces';
 // interfaces.ts
 
-interface SoftwareApplicationProps {
+export interface SoftwareApplicationProps {
     name: string;
     operatingSystem: string;
     applicationCategory: string;

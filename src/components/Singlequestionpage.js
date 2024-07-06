@@ -114,7 +114,7 @@ const Singlequestionpage = () => {
           <div class="w-full md:w-2/3 flex flex-col mb-16">
             {/* <a href={`/practice/mcqs/${data[0]?.topic}`}><button class="mb-4 px-4 py-2 font-semibold text-gray inline-flex items-center space-x-2 rounded-lg border-2	hover:bg-blue-300">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <path strokeLinecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 
         <span>Practice More on {data[0]?.topic}</span>
