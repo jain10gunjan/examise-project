@@ -27,7 +27,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/ui/Navbar.tsx",
-    "src/app/test/create/page.js"
+    "src/app/_test/create/page.js"
   ],
   "exclude": ["node_modules"]
 }
