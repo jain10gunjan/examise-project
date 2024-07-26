@@ -1,18 +1,78 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 
 export default function AllCalculators() {
   const JSON_CALCULATORS = [
-    // { "title": "Age Calculator", "description": "An online age calculator calculates age and date of birth by adding and subtracting time, including years, days, hours, minutes, and seconds.", "uri": "/age-calculator/", "image": "../images/icon-96.png" },
-    { "title": "Protein Calculator", "description": "Relying on certain statistics and recommendations, this free protein calculator predicts how much protein a person needs each day to be healthy.", "uri": "/protein-calculator/", "image": "../images/icon-96.png" },
-    { "title": "BMI Calculator", "description": "The free Body Mass Index calculator, also known as BMI, computes and classNameifies BMI for children and adults using data obtained from WHO and CDC.", "uri": "/bmi-calculator/", "image": "../images/icon-96.png" },
-    { "title": "Macro Calculator", "description": "This macronutrient calculator computes macronutrient requirements relative to age, physical attributes, exercise level, and body weight objectives.", "uri": "/macro-calculator/", "image": "../images/icon-96.png" },
-    { "title": "Time Calculator", "description": "This free time calculator allows you to add and subtract time values using days, hours, minutes, and seconds. Learn about the different concepts of time here as well.", "uri": "/time-calculator/", "image": "../images/icon-96.png" },
-    { "title": "Auto Loan Calculator", "description": "This free loan calculator computes the monthly payment and overall cost of an auto loan while taking into consideration sales tax, costs, trade-in value, and other factors.", "uri": "/auto-loan-calculator/", "image": "../images/icon-96.png" },
-    { "title": "Loan Calculator", "description": "Free loan calculator helps determine repayment plans, the interest cost, the amortization schedule of conventional amortized loans, deferred payment loans, and bonds.", "uri": "/loan-calculator/", "image": "../images/icon-96.png" },
-    { "title": "Dice Roller", "description": "This online dice roller uses random number generation to create a digital dice rolling experience with all sorts of beneficial uses.", "uri": "/dice-roller/", "image": "../images/icon-96.png" },
-    { "title": "Hours Calculator", "description": "This online hour calculator is ideal for determining hours worked so that employers can determine pay accurately.", "uri": "/hours-calculator/", "image": "../images/icon-96.png" },
-    { "title": "Grade Calculator", "description": "Our weighted grade calculator shows your average and what to earn for the final grade you want. A timesaver if you don&#x27;t know how to calculate grades!", "uri": "/grade-calculator/", "image": "../images/icon-96.png" },
+    {
+      title: "Age Calculator",
+      description:
+        "An online age calculator calculates age and date of birth by adding and subtracting time, including years, days, hours, minutes, and seconds.",
+      uri: "/age-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Protein Calculator",
+      description:
+        "Relying on certain statistics and recommendations, this free protein calculator predicts how much protein a person needs each day to be healthy.",
+      uri: "/protein-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "BMI Calculator",
+      description:
+        "The free Body Mass Index calculator, also known as BMI, computes and classNameifies BMI for children and adults using data obtained from WHO and CDC.",
+      uri: "/bmi-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Macro Calculator",
+      description:
+        "This macronutrient calculator computes macronutrient requirements relative to age, physical attributes, exercise level, and body weight objectives.",
+      uri: "/macro-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Time Calculator",
+      description:
+        "This free time calculator allows you to add and subtract time values using days, hours, minutes, and seconds. Learn about the different concepts of time here as well.",
+      uri: "/time-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Auto Loan Calculator",
+      description:
+        "This free loan calculator computes the monthly payment and overall cost of an auto loan while taking into consideration sales tax, costs, trade-in value, and other factors.",
+      uri: "/auto-loan-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Loan Calculator",
+      description:
+        "Free loan calculator helps determine repayment plans, the interest cost, the amortization schedule of conventional amortized loans, deferred payment loans, and bonds.",
+      uri: "/loan-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Dice Roller   ",
+      description:
+        "This online dice roller uses random number generation to create a digital dice rolling experience with all sorts of beneficial uses.",
+      uri: "/dice-roller/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Hours Calculator",
+      description:
+        "This online hour calculator is ideal for determining hours worked so that employers can determine pay accurately.",
+      uri: "/hours-calculator/",
+      image: "../images/icon-96.png",
+    },
+    {
+      title: "Grade Calculator",
+      description:
+        "Our weighted grade calculator shows your average and what to earn for the final grade you want. A timesaver if you don&#x27;t know how to calculate grades!",
+      uri: "/grade-calculator/",
+      image: "../images/icon-96.png",
+    },
     // { "title": "Basic Calculator", "description": "This online calculator performs basic mathematical operations like addition, subtraction, division, and multiplication. You can use the calculator to find percentages and taxes.", "uri": "/basic-calculator/", "image": "../images/icon-96.png" },
     // { "title": "Fraction Calculator", "description": "Check out this free online fraction calculator. It can solve mathematical problems such as addition, subtraction, multiplication, and division of fractions.", "uri": "/fraction-calculator/", "image": "../images/icon-96.png" },
     // { "title": "BMR Calculator", "description": "Free BMR calculator uses well-known algorithms to calculate the basal metabolic rate. Also, find out more about the factors that influence BMR.", "uri": "/bmr-calculator/", "image": "../images/icon-96.png" },
@@ -161,43 +221,60 @@ export default function AllCalculators() {
     // { "title": "SIP Сalculator", "description": "Calculate SIP returns, growth &amp; wealth accumulation with confidence using our SIP calculator. Make informed investment decisions.", "uri": "/sip-calculator/", "image": "../images/icon-96.png" }
   ];
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredCalculators, setFilteredCalculators] = useState(JSON_CALCULATORS);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredCalculators, setFilteredCalculators] =
+    useState(JSON_CALCULATORS);
 
   useEffect(() => {
-    console.log("Running.")
+    console.log("Running.");
     setFilteredCalculators(
       JSON_CALCULATORS.filter((calculator) =>
         calculator.title.toLowerCase().includes(searchQuery.toLowerCase())
       )
     );
   }, [searchQuery]);
-  
-
 
   return (
     <>
-
       <div className="overflow-hidden">
         <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="relative mx-auto max-w-4xl grid space-y-5 sm:space-y-10">
             <div className="text-center">
               <h1 className="text-3xl text-gray-800 font-bold sm:text-5xl lg:text-6xl lg:leading-tight dark:text-neutral-200">
-                Access a wide variety of calculators  <span className="text-blue-500">to solve any problem with ease.</span>
+                Access a wide variety of calculators{" "}
+                <span className="text-blue-500">
+                  to solve any problem with ease.
+                </span>
               </h1>
             </div>
 
-
-
-
-
-
-
-            <div className="hidden absolute top-2/4 end-0 transform -translate-y-2/4 translate-x-40 md:block lg:translate-x-80" aria-hidden="true">
-              <svg className="w-72 h-auto" width="1115" height="636" viewBox="0 0 1115 636" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.990203 279.321C-1.11035 287.334 3.68307 295.534 11.6966 297.634L142.285 331.865C150.298 333.965 158.497 329.172 160.598 321.158C162.699 313.145 157.905 304.946 149.892 302.845L33.8132 272.418L64.2403 156.339C66.3409 148.326 61.5475 140.127 53.5339 138.026C45.5204 135.926 37.3213 140.719 35.2207 148.733L0.990203 279.321ZM424.31 252.289C431.581 256.26 440.694 253.585 444.664 246.314C448.635 239.044 445.961 229.931 438.69 225.96L424.31 252.289ZM23.0706 296.074C72.7581 267.025 123.056 230.059 187.043 212.864C249.583 196.057 325.63 198.393 424.31 252.289L438.69 225.96C333.77 168.656 249.817 164.929 179.257 183.892C110.144 202.465 54.2419 243.099 7.92943 270.175L23.0706 296.074Z" fill="currentColor" className="fill-orange-500" />
-                <path d="M451.609 382.417C446.219 388.708 446.95 398.178 453.241 403.567L555.763 491.398C562.054 496.788 571.524 496.057 576.913 489.766C582.303 483.474 581.572 474.005 575.281 468.615L484.15 390.544L562.222 299.413C567.612 293.122 566.881 283.652 560.59 278.263C554.299 272.873 544.829 273.604 539.44 279.895L451.609 382.417ZM837.202 559.655C841.706 566.608 850.994 568.593 857.947 564.09C864.9 559.586 866.885 550.298 862.381 543.345L837.202 559.655ZM464.154 407.131C508.387 403.718 570.802 395.25 638.136 410.928C704.591 426.401 776.318 465.66 837.202 559.655L862.381 543.345C797.144 442.631 718.724 398.89 644.939 381.709C572.033 364.734 504.114 373.958 461.846 377.22L464.154 407.131Z" fill="currentColor" className="fill-cyan-500" />
-                <path d="M447.448 0.194357C439.203 -0.605554 431.87 5.43034 431.07 13.6759L418.035 148.045C417.235 156.291 423.271 163.623 431.516 164.423C439.762 165.223 447.095 159.187 447.895 150.942L459.482 31.5025L578.921 43.0895C587.166 43.8894 594.499 37.8535 595.299 29.6079C596.099 21.3624 590.063 14.0296 581.818 13.2297L447.448 0.194357ZM1086.03 431.727C1089.68 439.166 1098.66 442.239 1106.1 438.593C1113.54 434.946 1116.62 425.96 1112.97 418.521L1086.03 431.727ZM434.419 24.6572C449.463 42.934 474.586 81.0463 521.375 116.908C568.556 153.07 637.546 187.063 742.018 200.993L745.982 171.256C646.454 157.985 582.444 125.917 539.625 93.0974C496.414 59.978 474.537 26.1903 457.581 5.59138L434.419 24.6572ZM742.018 200.993C939.862 227.372 1054.15 366.703 1086.03 431.727L1112.97 418.521C1077.85 346.879 956.138 199.277 745.982 171.256L742.018 200.993Z" fill="currentColor" className="fill-gray-800 dark:fill-white" />
+            <div
+              className="hidden absolute top-2/4 end-0 transform -translate-y-2/4 translate-x-40 md:block lg:translate-x-80"
+              aria-hidden="true"
+            >
+              <svg
+                className="w-72 h-auto"
+                width="1115"
+                height="636"
+                viewBox="0 0 1115 636"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.990203 279.321C-1.11035 287.334 3.68307 295.534 11.6966 297.634L142.285 331.865C150.298 333.965 158.497 329.172 160.598 321.158C162.699 313.145 157.905 304.946 149.892 302.845L33.8132 272.418L64.2403 156.339C66.3409 148.326 61.5475 140.127 53.5339 138.026C45.5204 135.926 37.3213 140.719 35.2207 148.733L0.990203 279.321ZM424.31 252.289C431.581 256.26 440.694 253.585 444.664 246.314C448.635 239.044 445.961 229.931 438.69 225.96L424.31 252.289ZM23.0706 296.074C72.7581 267.025 123.056 230.059 187.043 212.864C249.583 196.057 325.63 198.393 424.31 252.289L438.69 225.96C333.77 168.656 249.817 164.929 179.257 183.892C110.144 202.465 54.2419 243.099 7.92943 270.175L23.0706 296.074Z"
+                  fill="currentColor"
+                  className="fill-orange-500"
+                />
+                <path
+                  d="M451.609 382.417C446.219 388.708 446.95 398.178 453.241 403.567L555.763 491.398C562.054 496.788 571.524 496.057 576.913 489.766C582.303 483.474 581.572 474.005 575.281 468.615L484.15 390.544L562.222 299.413C567.612 293.122 566.881 283.652 560.59 278.263C554.299 272.873 544.829 273.604 539.44 279.895L451.609 382.417ZM837.202 559.655C841.706 566.608 850.994 568.593 857.947 564.09C864.9 559.586 866.885 550.298 862.381 543.345L837.202 559.655ZM464.154 407.131C508.387 403.718 570.802 395.25 638.136 410.928C704.591 426.401 776.318 465.66 837.202 559.655L862.381 543.345C797.144 442.631 718.724 398.89 644.939 381.709C572.033 364.734 504.114 373.958 461.846 377.22L464.154 407.131Z"
+                  fill="currentColor"
+                  className="fill-cyan-500"
+                />
+                <path
+                  d="M447.448 0.194357C439.203 -0.605554 431.87 5.43034 431.07 13.6759L418.035 148.045C417.235 156.291 423.271 163.623 431.516 164.423C439.762 165.223 447.095 159.187 447.895 150.942L459.482 31.5025L578.921 43.0895C587.166 43.8894 594.499 37.8535 595.299 29.6079C596.099 21.3624 590.063 14.0296 581.818 13.2297L447.448 0.194357ZM1086.03 431.727C1089.68 439.166 1098.66 442.239 1106.1 438.593C1113.54 434.946 1116.62 425.96 1112.97 418.521L1086.03 431.727ZM434.419 24.6572C449.463 42.934 474.586 81.0463 521.375 116.908C568.556 153.07 637.546 187.063 742.018 200.993L745.982 171.256C646.454 157.985 582.444 125.917 539.625 93.0974C496.414 59.978 474.537 26.1903 457.581 5.59138L434.419 24.6572ZM742.018 200.993C939.862 227.372 1054.15 366.703 1086.03 431.727L1112.97 418.521C1077.85 346.879 956.138 199.277 745.982 171.256L742.018 200.993Z"
+                  fill="currentColor"
+                  className="fill-gray-800 dark:fill-white"
+                />
               </svg>
             </div>
           </div>
@@ -216,16 +293,52 @@ export default function AllCalculators() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-2">
           {filteredCalculators.map((data, index) => (
-            <a href={`/calculators${data.uri}`} key={index} className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800">
+            <a
+              href={`/calculators${data.uri}`}
+              key={index}
+              className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800"
+            >
               <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
-                <svg className="flex-shrink-0 size-6 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" strokeLinecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2" /><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4" /><path d="M8 18h.01" /></svg>
+                <svg
+                  className="flex-shrink-0 size-6 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  strokeLinecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="10" height="14" x="3" y="8" rx="2" />
+                  <path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4" />
+                  <path d="M8 18h.01" />
+                </svg>
               </div>
               <div className="mt-5">
-                <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">{data.title}</h3>
-                <p className="mt-1 text-gray-600 dark:text-neutral-400">{data.description}</p>
-                <div  className="mt-2 inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 group-hover:underline font-medium">
+                <h3 className="group-hover:text-gray-600 text-lg font-semibold text-gray-800 dark:text-white dark:group-hover:text-gray-400">
+                  {data.title}
+                </h3>
+                <p className="mt-1 text-gray-600 dark:text-neutral-400">
+                  {data.description}
+                </p>
+                <div className="mt-2 inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 group-hover:underline font-medium">
                   Learn more
-                  <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" strokeLinecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                  <svg
+                    className="flex-shrink-0 size-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    strokeLinecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
                 </div>
               </div>
             </a>
@@ -233,5 +346,5 @@ export default function AllCalculators() {
         </div>
       </div>
     </>
-  )
+  );
 }

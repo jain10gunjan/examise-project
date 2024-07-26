@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import SharingStick from "@/components/ui/SharingStick";
-
+import Navbar from "../components/ui/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,14 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <div className="bg-gray-800">
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-      <SharingStick/>
-
-      </body>
-      <Footer />
-    </div>
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+          <SharingStick />
+        </body>
+        <Footer />
+      </div>
     </html>
   );
 }
