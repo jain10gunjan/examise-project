@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/ui/Footer";
 import SharingStick from "@/components/ui/SharingStick";
 import Navbar from "../components/ui/Navbar";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 

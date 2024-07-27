@@ -237,7 +237,7 @@ export default function AllCalculators() {
   return (
     <>
       <div className="overflow-hidden">
-        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="relative mx-auto max-w-4xl grid space-y-5 sm:space-y-10">
             <div className="text-center">
               <h1 className="text-3xl text-gray-800 font-bold sm:text-5xl lg:text-6xl lg:leading-tight dark:text-neutral-200">
