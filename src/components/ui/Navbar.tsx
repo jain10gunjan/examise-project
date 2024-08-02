@@ -7,11 +7,13 @@ import { useState, useEffect } from "react";
 // import firebaseConfig from "../../Firebase/firebase.config";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { useAuth } from "../../components/context/Authcontext";
 
 // firebase.initializeApp(firebaseConfig);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signInWithGoogle, signOut } = useAuth();
   // const [user, setUser] = useState(null);
 
   // useEffect(() => {
@@ -330,15 +332,43 @@ const Navbar = () => {
               >
                 Privacy Policy
               </a>
-
-              <div>
+              <a
+                className="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300"
+                href="/pages/privacy-policy"
+              >
+                Contact Us
+              </a>
+              {user?.uid == process.env.NEXT_PUBLIC_ADMIN_USERID && (
                 <a
-                  className="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none"
-                  href="/pages/contact-us"
+                  className="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300"
+                  href="/admin"
                 >
-                  Contact us
+                  Admin
                 </a>
-              </div>
+              )}
+              {!user ? (
+                <>
+                  <div>
+                    <button
+                      className="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none"
+                      onClick={signInWithGoogle}
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <button
+                      className="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none"
+                      onClick={signOut}
+                    >
+                      Sign out
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
@@ -381,13 +411,45 @@ const Navbar = () => {
                 >
                   Privacy Policy
                 </a>
-                <div>
+                <a
+                  className="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300"
+                  href="/pages/contact-us"
+                >
+                  Contact Us
+                </a>
+
+                {user?.uid === process.env.ADMIN_USERID && (
                   <a
-                    className="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none"
-                    href="/pages/contact-us"
+                    className="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300"
+                    href="/admin"
                   >
-                    Contact us
+                    Admin
                   </a>
+                )}
+                <div>
+                  {!user ? (
+                    <>
+                      <div>
+                        <button
+                          className="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none"
+                          onClick={signInWithGoogle}
+                        >
+                          Sign In
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <button
+                          className="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none"
+                          onClick={signOut}
+                        >
+                          Sign out
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

@@ -5,6 +5,7 @@ import Footer from "@/components/ui/Footer";
 import SharingStick from "@/components/ui/SharingStick";
 import Navbar from "../components/ui/Navbar";
 import Script from "next/script";
+import { AuthProvider } from "../components/context/Authcontext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,14 +26,15 @@ export default function RootLayout({
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2873018653456315"
         crossOrigin="anonymous"
       ></Script>
-      <div className="">
-        <body className={inter.className}>
+
+      <body className={inter.className}>
+        <AuthProvider>
           <Navbar />
           {children}
           <SharingStick />
-        </body>
-        <Footer />
-      </div>
+          <Footer />
+        </AuthProvider>
+      </body>
     </html>
   );
 }
