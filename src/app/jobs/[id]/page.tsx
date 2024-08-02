@@ -65,7 +65,7 @@ Type: ${job?.type}
 Category: ${job?.category}
 Location: ${job?.companyLocation}
 Salary: ${job?.salary}
-Apply Link: https://examise.in/jobs/${jobid}`;
+Apply Link: https://examise.in/jobs/${jobid.id}`;
 
     navigator.clipboard
       .writeText(textToCopy)
