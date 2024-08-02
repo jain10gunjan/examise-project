@@ -96,13 +96,6 @@ Apply Link: https://examise.in/jobs/${jobid.id}`;
         <div className="container mx-auto flex flex-col px-5 py-10 justify-center items-center">
           <div className="relative mt-4 bg-white  shadow-xl shadow-gray-100 w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center  justify-between px-5 py-4 rounded-md">
             <div>
-              <Image
-                src={job?.image}
-                height={60}
-                width={60}
-                className="justify-start rounded-xl self-center"
-                alt="company-logo"
-              />
               <span className="font-extrabold text-purple-800 text-sm">
                 {job?.companyName}
               </span>
