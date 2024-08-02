@@ -13,6 +13,7 @@ import {
   googleProvider,
   signOut,
 } from "../../Firebase/firebase.config";
+import toast, { Toaster } from "react-hot-toast";
 
 interface AuthContextProps {
   user: User | null;
@@ -35,10 +36,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signInWithGoogle = async () => {
     await signInWithPopup(auth, googleProvider);
+    toast.success("Signed In Successfully");
   };
 
   const signOutUser = async () => {
     await signOut(auth);
+    toast.success("Signed Out Successfully");
   };
 
   return (

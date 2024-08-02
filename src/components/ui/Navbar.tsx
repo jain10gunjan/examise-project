@@ -2,8 +2,15 @@
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
 import { useAuth } from "../../components/context/Authcontext";
+import toast, { Toaster } from "react-hot-toast";
+import ReactGA from "react-ga4";
 
 // firebase.initializeApp(firebaseConfig);
+const TRACKING_ID = process.env.NEXT_PUBLIC_MEASUREMENT_ID || ""; // Provide a default value
+ReactGA.initialize(TRACKING_ID);
+// Send an initial pageview
+ReactGA.send("pageview");
+console.log("Sending the google analytics data");
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
