@@ -1,3 +1,5 @@
+"use client";
+
 const JSON_CALCULATORS = [
   {
     title: "Age Calculator",

@@ -1,10 +1,23 @@
 "use client";
-import Sidebar from "@/components/calculators/sidebarrelated/Sidebar";
-import MetaDataJobs from "@/components/MetaDataJobs";
+// import Sidebar from "@/components/calculators/sidebarrelated/Sidebar";
+// import MetaDataJobs from "@/components/MetaDataJobs";
 import AngryBirdsSchema, { SoftwareApplicationProps } from "@/lib/Schema";
-import Share_print from "@/lib/share_print";
+// import Share_print from "@/lib/share_print";
 import React from "react";
 import coverImage from "../../../../public/time_calculator.png";
+import dynamic from "next/dynamic";
+
+// Dynamically import components that might use navigator
+const Sidebar = dynamic(
+  () => import("@/components/calculators/sidebarrelated/Sidebar"),
+  {
+    ssr: false,
+  }
+);
+const MetaDataJobs = dynamic(() => import("@/components/MetaDataJobs"), {
+  ssr: false,
+});
+const Share_print = dynamic(() => import("@/lib/share_print"), { ssr: false });
 
 const Timecalculator = () => {
   const angryBirdsData: SoftwareApplicationProps = {

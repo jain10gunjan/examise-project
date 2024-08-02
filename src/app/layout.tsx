@@ -3,10 +3,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/ui/Footer";
 import SharingStick from "@/components/ui/SharingStick";
-import Navbar from "../components/ui/Navbar";
+// import Navbar from "../components/ui/Navbar";
 import Script from "next/script";
 import { AuthProvider } from "../components/context/Authcontext";
+import dynamic from "next/dynamic";
 
+const Navbar = dynamic(() => import("../components/ui/Navbar"), {
+  ssr: false,
+});
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

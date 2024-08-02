@@ -1,12 +1,6 @@
 "use client";
 import { Transition } from "@headlessui/react";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-// import firebase from "firebase/compat/app";
-// import "firebase/compat/auth";
-// import firebaseConfig from "../../Firebase/firebase.config";
-import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
 import { useAuth } from "../../components/context/Authcontext";
 
 // firebase.initializeApp(firebaseConfig);
