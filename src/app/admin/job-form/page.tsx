@@ -80,44 +80,50 @@ const JobsForm = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-md shadow-md">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-        Submit a Job
-      </h2>
-      {submittedIds ? submittedIds : null}
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Form fields */}
-        {Object.keys(formData).map((key) => (
-          <div key={key} className="mb-4">
-            <label
-              htmlFor={key}
-              className="block text-sm font-medium text-gray-700 capitalize"
-            >
-              {key.replace(/([A-Z])/g, " $1").trim()}
-            </label>
-            <input
-              type={key === "salary" ? "text" : "text"} // Set type to number only for salary
-              id={key}
-              name={key}
-              value={formData[key as keyof JobFormData]}
-              onChange={handleChange}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-          </div>
-        ))}
+    <>
+      {user?.uid == process.env.NEXT_PUBLIC_ADMIN_USERID && (
+        <>
+          <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-md shadow-md">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+              Submit a Job
+            </h2>
+            {submittedIds ? submittedIds : null}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Form fields */}
+              {Object.keys(formData).map((key) => (
+                <div key={key} className="mb-4">
+                  <label
+                    htmlFor={key}
+                    className="block text-sm font-medium text-gray-700 capitalize"
+                  >
+                    {key.replace(/([A-Z])/g, " $1").trim()}
+                  </label>
+                  <input
+                    type={key === "salary" ? "text" : "text"} // Set type to number only for salary
+                    id={key}
+                    name={key}
+                    value={formData[key as keyof JobFormData]}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                </div>
+              ))}
 
-        <div className="mt-6">
-          <button
-            type="submit"
-            className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
-          >
-            Submit Job
-          </button>
-        </div>
-      </form>
-      {/* Toast Container */}
-      <Toaster />
-    </div>
+              <div className="mt-6">
+                <button
+                  type="submit"
+                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+                >
+                  Submit Job
+                </button>
+              </div>
+            </form>
+            {/* Toast Container */}
+            <Toaster />
+          </div>
+        </>
+      )}
+    </>
   );
 };
 
