@@ -66,7 +66,7 @@ const PopupComponent = ({
           Sign In
         </h1>
         <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
-          Sign In To Access The Job Link For Free.
+          Sign In To Access The Solution For Free.
         </p>
       </div>
       <div className="mt-5">
