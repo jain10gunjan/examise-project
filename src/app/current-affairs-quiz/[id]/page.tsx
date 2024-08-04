@@ -4,6 +4,7 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
 import toast, { Toaster } from "react-hot-toast";
 import { useParams } from "next/navigation";
 import { useAuth } from "@/components/context/Authcontext";
+import MetaDataJobs from "@/components/MetaDataJobs";
 
 interface Question {
   question: string;
@@ -225,6 +226,10 @@ const MCQComponent: React.FC = () => {
 
   return (
     <>
+      <MetaDataJobs
+        seoTitle={`Current Affairs Quiz - ${date}`}
+        seoDescription={`Practice Daily Current Affairs Quiz For Free At Examise.in`}
+      />
       <section className="">
         <div className="mt-20 text-gray-600 body-font">
           <div className="container mx-auto flex flex-col px-5 py-4 justify-center items-center">
